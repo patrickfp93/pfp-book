@@ -12,29 +12,25 @@ export default function App() {
     const sizeAppFooter = aspectState ? "expand" : "collapse";
     const [themeState, toggleThemeState] = useToggle(true);
     const winSize = useWindowSize();
-    const [appHeaderRef, appHeaderSize] = useMeasure();
     const [avatarRef, avatarSize] = useMeasure();
-    const [appFooterRef, appFooterSize] = useMeasure();
     const avatarStyle = {
         left: ((winSize.width ?? 0) / 2) - (avatarSize.width ?? 0) / 2,
         top: ((winSize.height ?? 0) / 2) - (avatarSize.height ?? 0) / 2,
     };
-    const contentMinHeight = (winSize.height ?? 0) - (((appFooterSize.height ?? 0) + (appHeaderSize.height ?? 0)));
+    const headerMinHeight = 100;
+    const footerMinHeight = 100;
+    const contentMinHeight = (winSize.height ?? 0) - (headerMinHeight + footerMinHeight);
     return (
         <CustomProvider theme={(themeState) ? "high-contrast" : "light"} locale={ptBR}>
             <Container>
-                <div ref={appHeaderRef}>
-                    <AppHeader stateSize={sizeAppHeader}>
-                        <Avatar ref={avatarRef} style={avatarStyle} onClick={() => toggleAspectState()} size="lg" as={motion.div} whileHover={{ scale: 2.5, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" }}
-                            transition={{ type: "spring", stiffness: 200, damping: 10 }}
-                            src={avatarImg} circle />
-                    </AppHeader>
-                </div>
+                <AppHeader stateSize={sizeAppHeader}>
+                    <Avatar ref={avatarRef} style={avatarStyle} onClick={() => toggleAspectState()} size="lg" as={motion.div} whileHover={{ scale: 2.5, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" }}
+                        transition={{ type: "spring", stiffness: 200, damping: 10 }}
+                        src={avatarImg} circle />
+                </AppHeader>
                 <Content style={{ minHeight: contentMinHeight }} />
-                <div ref={appFooterRef}>
-                    <AppFooter stateSize={sizeAppFooter}>
-                    </AppFooter>
-                </div>
+                <AppFooter stateSize={sizeAppFooter}>
+                </AppFooter>
             </Container>
         </CustomProvider>)
 };
