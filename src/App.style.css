@@ -1,0 +1,9 @@
+.content-background-dark {
+    background-image: url("data:image/svg+xml;utf8,<?xml version='1.0' encoding='utf-8'?><svg viewBox='150 150 100 100' width='100' height='100' xmlns='http://www.w3.org/2000/svg'><rect x='397.3' y='255.767' width='70' height='70' style='fill:rgba(26, 29, 36, 255); stroke: rgba(0, 0, 0, 0); transform-origin: 432.275px 290.767px;' transform='matrix(0.707107007504, 0.707107007504, -0.707107007504, 0.707107007504, -232.275328835105, -90.767157890078)'/></svg>");
+    background-repeat: repeat;
+}
+.content-background-light{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' version='1.1'><line x1='0' y1='100' x2='100' y2='0' style='stroke:%23f7f7fa; stroke-width:1' /><line x1='0' y1='0' x2='100' y2='100' style='stroke:%23f7f7fa; stroke-width:1' /></svg>");
+    background-repeat: repeat;
+}
+
