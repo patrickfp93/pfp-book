@@ -23,6 +23,6 @@ export default function AppHeader({ stateSize = "expand", children, style ,...pr
 
     return (<>
         <motion.div style={{...internal_style, position:"fixed" }} variants={variants} animate={stateSize}>{children}</motion.div>
-        <Header style={internal_style} {...props}></Header>
+        <Header style={{...internal_style, zIndex:0}} {...props}></Header>
     </>);
 }

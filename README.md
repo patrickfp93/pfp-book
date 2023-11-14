@@ -19,6 +19,8 @@ The primary goal of this website is to provide a holistic view of my skills and 
 ### Update5 alfa-001 *(0.1.5)* 
 - Created the initial presentation opening of the website.
 - Fixed vexel publishing problem
+### Update6 alfa-001 *(0.1.6)*
+- finish initial presentation opening of the website
 
 ## 🛠️Technologies Used
 

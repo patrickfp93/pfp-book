@@ -2,17 +2,20 @@ import { useMeasure, useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import Avatar from "rsuite/Avatar";
 import avatarImg from "./../../assets/me_anime_block.png";
-import AspectState from "../../interfaces/AspectState";
+import LayoutAspectState from "../../interfaces/LayoutAspectState";
 type AppAvatarProps = {
-    style: React.CSSProperties | undefined
-} & AspectState;
+    style?: React.CSSProperties
+} & LayoutAspectState;
 
-export function AppAvatar({ aspectState = true, toggleAspectState, style }: AppAvatarProps) {
+export function AppAvatar({ aspectState = "expand", toggleAspectState, style }: AppAvatarProps) {
     const [avatarRef, avatarSize] = useMeasure();
     const winSize = useWindowSize();
     const avatarStyle: React.CSSProperties = {
         zIndex: 9999,
-        ...style
+        ...style,
+        width: avatarSize.width??0,
+        height: avatarSize.height??0,
+        position:"fixed"
     };
     const variants: Variants = {
         expand: {
@@ -25,8 +28,10 @@ export function AppAvatar({ aspectState = true, toggleAspectState, style }: AppA
         }
     }
 
-    return (<Avatar ref={avatarRef} style={avatarStyle} variants={variants} animate={(aspectState) ? "expand":"collapse"}  onClick={() => (toggleAspectState) ? toggleAspectState() : {}} size="lg"
-        as={motion.div} whileHover={{ scale: 2, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" }}
-        transition={{ type: "spring", stiffness: 85, damping: 10 }}
-        src={avatarImg} circle />);
+    return (<motion.div style={avatarStyle} transition={{type:"spring", stiffness: 200, damping: 20}} variants={variants} animate={aspectState} onClick={() => (toggleAspectState) ? toggleAspectState() : {}} >
+        <Avatar ref={avatarRef} size="lg"
+            as={motion.div} whileHover={{ scale: 2, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" }}
+            transition={{type:"spring", stiffness: 400, damping: 15}}
+            src={avatarImg} circle />
+    </motion.div>);
 }
