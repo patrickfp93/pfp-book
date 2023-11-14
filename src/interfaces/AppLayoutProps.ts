@@ -1,4 +1,6 @@
-import WithChildren from "./util/WithChildren";
-export default interface AppLayoutProps extends WithChildren{
-    stateSize? : "expand" | "collapse"
+import React from "react";
+
+export default interface AppLayoutProps{
+    stateSize? : "expand" | "collapse",
+    children? : React.ReactNode
 }
