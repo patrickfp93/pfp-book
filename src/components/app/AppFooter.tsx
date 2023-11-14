@@ -1,15 +1,13 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
-import { Footer} from "rsuite";
+import Footer from "rsuite/Footer";
 import AppLayoutProps from "../../interfaces/AppLayoutProps";
-
-export default function AppHeader({ stateSize = "expand", children, style ,...props}: AppLayoutProps) {
+import './../../styles/app.components.less';
+export default function AppFooter({ stateSize = "expand", children, style ,...props}: AppLayoutProps) {
     const size = useWindowSize();
     const internal_style : React.CSSProperties = {
         ...style,
-        background: '#987552',
-        width: (size.width ?? 0),
-        bottom: 0
+        width: (size.width ?? 0)
     }
     const variants: Variants = {
         expand: {
@@ -21,7 +19,7 @@ export default function AppHeader({ stateSize = "expand", children, style ,...pr
     }
 
     return (<>
-        <motion.div style={{...internal_style, position:"fixed" }} variants={variants} animate={stateSize}>{children}</motion.div>
-        <Footer style={internal_style} {...props}></Footer>
+        <motion.div className="footer" style={{...internal_style, position:"fixed" }} variants={variants} animate={stateSize}>{children}</motion.div>
+        <Footer className="footer" style={internal_style} {...props}></Footer>
     </>);
 }

@@ -17,10 +17,13 @@ The primary goal of this website is to provide a holistic view of my skills and 
 4. **Blog/Articles:** I share insights, reflections, and knowledge through articles and blog posts. This not only showcases my communication skills but also demonstrates my commitment to continuous learning.
 ## 📜Changelog
 ### Update5 alfa-001 *(0.1.5)* 
-- Created the initial presentation opening of the website.
-- Fixed vexel publishing problem
+- Created the initial presentation opening of the website;
+- Fixed vexel publishing problem.
 ### Update6 alfa-001 *(0.1.6)*
-- finish initial presentation opening of the website
+- Finalized initial presentation of the website opening animation.
+### Update7 alfa--001 *(0.1.7)*
+- Added .less support to the website project;
+- Updated the colors in the website standard.
 
 ## 🛠️Technologies Used
 

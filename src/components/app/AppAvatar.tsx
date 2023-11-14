@@ -24,7 +24,7 @@ export function AppAvatar({ aspectState = "expand", toggleAspectState, style }: 
         },
         collapse: {
             left: 0,
-            top: 0,
+            top: 20,
         }
     }
 

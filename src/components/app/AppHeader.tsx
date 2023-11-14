@@ -2,12 +2,12 @@ import { useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import { Header } from "rsuite";
 import AppLayoutProps from "../../interfaces/AppLayoutProps";
+import "./../../styles/app.components.less";
 
 export default function AppHeader({ stateSize = "expand", children, style ,...props}: AppLayoutProps) {
     const size = useWindowSize();
     const internal_style : React.CSSProperties = {
         ...style,
-        background: '#654987',
         width: (size.width ?? 0),
         zIndex : 9999
         
@@ -22,7 +22,7 @@ export default function AppHeader({ stateSize = "expand", children, style ,...pr
     }
 
     return (<>
-        <motion.div style={{...internal_style, position:"fixed" }} variants={variants} animate={stateSize}>{children}</motion.div>
-        <Header style={{...internal_style, zIndex:0}} {...props}></Header>
+        <motion.div className="header" style={{...internal_style, position:"fixed" }} variants={variants} animate={stateSize}>{children}</motion.div>
+        <Header className="header" style={{...internal_style, zIndex:0}} {...props}></Header>
     </>);
 }
