@@ -3,24 +3,25 @@ import { Variants, motion } from "framer-motion";
 import { Footer} from "rsuite";
 import AppLayoutProps from "../../interfaces/AppLayoutProps";
 
-export default function AppFooter({stateSize = "expand", children} : AppLayoutProps){
+export default function AppHeader({ stateSize = "expand", children, style ,...props}: AppLayoutProps) {
     const size = useWindowSize();
-    
-    const style ={
-        background : '#968435',
-        width : size.width ?? 0,
+    const internal_style : React.CSSProperties = {
+        ...style,
+        background: '#987552',
+        width: (size.width ?? 0),
         bottom: 0
     }
-    const variants : Variants ={
-        expand : {
-            height: (size.height??0)/2,
-            position:"fixed"    ,
-                    
+    const variants: Variants = {
+        expand: {
+            height: ((size.height ?? 0) / 2) + "px",
         },
-        collapse : {
-            height :0,
-            position:"absolute"  
+        collapse: {
+            height: "0px",
         }
     }
-    return(<Footer style={style}  as={motion.div} variants={variants} animate={stateSize}>{children}</Footer>);
+
+    return (<>
+        <motion.div style={{...internal_style, position:"fixed" }} variants={variants} animate={stateSize}>{children}</motion.div>
+        <Footer style={internal_style} {...props}></Footer>
+    </>);
 }
