@@ -10,7 +10,7 @@ export default function App() {
     const [aspectState, toggleAspectState] = useToggle(true);
     const sizeAppHeader = aspectState ? "expand" : "collapse";
     const sizeAppFooter = aspectState ? "expand" : "collapse";
-    const [themeState, toggleThemeState] = useToggle(true);
+    const [themeState, _toggleThemeState] = useToggle(true);
     const winSize = useWindowSize();
     const [avatarRef, avatarSize] = useMeasure();
     const avatarStyle = {
