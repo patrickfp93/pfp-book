@@ -1,0 +1,19 @@
+@import './../../variables.less';
+@import './base.less';
+
+.header-front{
+    .layout-base-front;   
+    z-index: 9999;
+}
+.header-light{
+    .header-front;
+    background: @primary-color;
+}
+.header-dark{
+    .header-front;
+    background: @primary-color-dark;
+}
+.header-high-contrast{
+    .header-front;
+    background: @primary-color-high-contrast;
+}

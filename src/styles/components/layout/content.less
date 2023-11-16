@@ -1,0 +1,32 @@
+@import './../../variables.less';
+.inline-svg-code( @code ) {
+    @-svg-code: escape(~'<?xml version="1.0" ?>@{code}');
+    @-inline-svg-code: ~'data:image/svg+xml,@{-svg-code}';
+    @-inline-svg-url: ~"url('@{-inline-svg-code}')";
+}
+
+
+.background-pattern(@first-color, @secund-color){
+    background-color: @first-color;
+   .inline-svg-code(~'<svg width="100" style="transform: rotate(45deg);" height="100" xmlns="http://www.w3.org/2000/svg"><rect height="70" width="70" y="15" x="15" stroke="rgba(0, 0, 0, 0.0)" fill="@{secund-color}"/></svg>');
+    background-image: @-inline-svg-url;
+    background-repeat: repeat;
+}
+
+.content-base{
+    width: 100%;
+}
+.content-light{
+    .content-base;
+    .background-pattern(@primary-color,@B700);
+}
+.content-dark{
+    .content-base;
+    background: @B500-dark;
+    .background-pattern(@primary-color-dark,@B700-dark);
+}
+.content-high-contrast{
+    .content-base;
+    .background-pattern(@primary-color-high-contrast,@B700-high-contrast);
+}
+

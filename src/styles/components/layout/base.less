@@ -1,0 +1,15 @@
+@import './../../variables.less';
+
+.layout-base{
+    width: 100%;
+    box-shadow: @box-shadow;
+}
+
+.layout-base-front{
+    .layout-base;
+    position: fixed;
+}
+.layout-base-back{
+    .layout-base;
+    z-index: 0;
+}

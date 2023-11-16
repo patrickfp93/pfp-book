@@ -1,23 +1,24 @@
 import { useMeasure, useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import Avatar from "rsuite/Avatar";
-import avatarImg from "./../../assets/me_anime_block.png";
+import avatarImg from "./../../assets/avatar.png";
 import LayoutAspectState from "../../interfaces/LayoutAspectState";
+import "./../../styles/components/avatar.less";
 type AppAvatarProps = {
     style?: React.CSSProperties
+    onShowMenu?: (value: boolean) => {},
+    showMenu?: boolean
 } & LayoutAspectState;
 
-export function AppAvatar({ aspectState = "expand", toggleAspectState, style }: AppAvatarProps) {
+export function AppAvatar({ aspectState = "expand", toggleAspectState, style, showMenu, onShowMenu }: AppAvatarProps) {
     const [avatarRef, avatarSize] = useMeasure();
     const winSize = useWindowSize();
     const avatarStyle: React.CSSProperties = {
-        zIndex: 9999,
         ...style,
-        width: avatarSize.width??0,
-        height: avatarSize.height??0,
-        position:"fixed"
+        width: avatarSize.width ?? 0,
+        height: avatarSize.height ?? 0,
     };
-    const variants: Variants = {
+    const variantsContainer: Variants = {
         expand: {
             left: ((winSize.width ?? 0) / 2) - (avatarSize.width ?? 0) / 2,
             top: ((winSize.height ?? 0) / 2) - (avatarSize.height ?? 0) / 2,
@@ -27,11 +28,38 @@ export function AppAvatar({ aspectState = "expand", toggleAspectState, style }: 
             top: 20,
         }
     }
+    const variantsDescription: Variants = {
+        expand: {
+            width: "100%",            
+            height: "100%",
+        },
+        collapse: {
+            width: "0%",            
+            height: "0%",
+            display:"none"
+        }
+    }
 
-    return (<motion.div style={avatarStyle} transition={{type:"spring", stiffness: 200, damping: 20}} variants={variants} animate={aspectState} onClick={() => (toggleAspectState) ? toggleAspectState() : {}} >
-        <Avatar ref={avatarRef} size="lg"
+
+    const onClick = () => {
+        if (aspectState == "expand" && toggleAspectState) toggleAspectState()
+        else if (onShowMenu) onShowMenu(!(showMenu ?? true))
+    };
+
+    const onDoubleClick = () => {
+        if (aspectState == "collapse" && toggleAspectState) toggleAspectState()
+    };
+
+    return (<motion.div className={"container"} style={avatarStyle} transition={{ type: "spring", stiffness: 200, damping: 20 }} variants={variantsContainer} animate={aspectState}>
+        <Avatar onClick={onClick}
+            onDoubleClick={onDoubleClick}
+            ref={avatarRef} size="lg"
+            className="avatar"
             as={motion.div} whileHover={{ scale: 2, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" }}
-            transition={{type:"spring", stiffness: 400, damping: 15}}
+            transition={{ type: "spring", stiffness: 400, damping: 15 }}
             src={avatarImg} circle />
+        <motion.div className="description" animate={aspectState} variants={variantsDescription}>
+            <h1>PAFEPE</h1> <h3><b>BOOK!</b></h3>
+        </motion.div>
     </motion.div>);
 }

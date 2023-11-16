@@ -1,5 +1,6 @@
 import LayoutAspectState from "../../interfaces/LayoutAspectState";
 import { AppAvatar } from "./AppAvatar";
+import { MdBrightness1 as MDDark, MdBrightness5 as MDLight ,MdBrightness7 as MDHighContrast } from "react-icons/md";
 
 type AppMenuProps = {
     style?: React.CSSProperties

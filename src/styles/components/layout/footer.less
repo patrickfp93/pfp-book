@@ -1,0 +1,23 @@
+@import './../../variables.less';
+@import './base.less';
+//"light" | "dark" | "high-contrast"
+
+
+.footer-front{
+    .layout-base-front; 
+    bottom: 0;
+    z-index: 9990;
+}
+
+.footer-light{
+    .footer-front;
+    background: @B700;
+}
+.footer-dark{
+    .footer-front;
+    background: @B700-dark;
+}
+.footer-high-contrast{
+    .footer-front;
+    background: @B700-high-contrast;
+}
