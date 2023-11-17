@@ -1,7 +1,9 @@
 @import './../../variables.less';
 @import './base.less';
 //"light" | "dark" | "high-contrast"
-
+.background-gradient(@bottom-color){
+    background: linear-gradient(to top, rgba(@bottom-color,1) 0%,rgba(@bottom-color,0.75) 75% ,rgba(@bottom-color,0.5) 82.5%,rgba(@bottom-color,0.0) 100%);
+}
 
 .footer-front{
     .layout-base-front; 
@@ -11,13 +13,38 @@
 
 .footer-light{
     .footer-front;
-    background: @B700;
+    .background-pattern-expand(@B700,@primary-color);
+    color: @primary-color;
 }
 .footer-dark{
     .footer-front;
-    background: @B700-dark;
+    .background-pattern-expand(@B700-dark,@primary-color-dark);
+    color: @primary-color-dark;
 }
 .footer-high-contrast{
     .footer-front;
-    background: @B700-high-contrast;
+    .background-pattern-expand(@B700-high-contrast,@primary-color-high-contrast);
+    background-position: 50px 50px;
+    background-attachment: fixed;
+    color: @primary-color-high-contrast;
+}
+.footer-smoker-base{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.footer-smoker-light{
+    .footer-smoker-base; 
+    .background-gradient(@B700);
+}
+
+.footer-smoker-dark{
+    .footer-smoker-base; 
+    .background-gradient(@B700-dark);
+}
+
+.footer-smoker-high-contrast{
+    .footer-smoker-base; 
+    .background-gradient(@B700-high-contrast);
 }

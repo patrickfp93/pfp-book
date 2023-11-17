@@ -1,0 +1,5 @@
+.inline-svg-code( @code ) {
+    @-svg-code: escape(~'<?xml version="1.0" ?>@{code}');
+    @-inline-svg-code: ~'data:image/svg+xml,@{-svg-code}';
+    @-inline-svg-url: ~"url('@{-inline-svg-code}')";
+}

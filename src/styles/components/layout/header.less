@@ -1,19 +1,43 @@
 @import './../../variables.less';
 @import './base.less';
-
+.background-gradient(@top-color){
+    background: linear-gradient(to bottom, rgba(@top-color,1) 0%,rgba(@top-color,0.75) 75% ,rgba(@top-color,0.5) 82.5%,rgba(@top-color,0.0) 100%);
+}
 .header-front{
     .layout-base-front;   
-    z-index: 9999;
+    z-index: 9997;
 }
 .header-light{
     .header-front;
     background: @primary-color;
+    .background-pattern-expand(@primary-color, @B700);
 }
 .header-dark{
     .header-front;
     background: @primary-color-dark;
+    .background-pattern-expand(@primary-color-dark, @B700-dark);
 }
 .header-high-contrast{
     .header-front;
-    background: @primary-color-high-contrast;
+    .background-pattern-expand(@primary-color-high-contrast, @B700-high-contrast);
+    background-attachment: fixed;
+}
+
+.header-smoker-base{
+    width: 100%;
+    height: 100%;
+}
+.header-smoker-light{
+    .header-smoker-base; 
+    .background-gradient(@B700);
+}
+
+.header-smoker-dark{
+    .header-smoker-base; 
+    .background-gradient(@B700-dark);
+}
+
+.header-smoker-high-contrast{
+    .header-smoker-base;
+    .background-gradient(@primary-color-high-contrast);
 }

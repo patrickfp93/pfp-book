@@ -58,6 +58,7 @@ export function AppAvatar({ aspectState = "expand", toggleAspectState, style, sh
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
             src={avatarImg} 
             className="avatar"
+            style={{backgroundColor: "rgba(0,0,0,0)"}}
             circle />
         <motion.div className="description" animate={aspectState} variants={variantsDescription}>
             <h1>PAFEPE</h1> <h3><b>BOOK!</b></h3>

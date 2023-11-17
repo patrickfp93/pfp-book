@@ -27,7 +27,9 @@ The primary goal of this website is to provide a holistic view of my skills and 
 - Updated the colors in the website standard.
 #### Update8 *(0.1.8)*
 - Code refactoring;
-- Refurbishment to the site's default theme;
+- Refurbishment to the site's default theme.
+#### Update9 *(0.1.9)*
+- Added geometric pattern in SVG.
 
 ## 🛠️Technologies Used
 
