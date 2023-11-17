@@ -1,7 +1,7 @@
 import { useMeasure, useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import Avatar from "rsuite/Avatar";
-import avatarImg from "./../../assets/avatar.png";
+import avatarImg from "./../../assets/avatar-min.png";
 import LayoutAspectState from "../../interfaces/LayoutAspectState";
 import "./../../styles/components/avatar.less";
 type AppAvatarProps = {
@@ -54,10 +54,11 @@ export function AppAvatar({ aspectState = "expand", toggleAspectState, style, sh
         <Avatar onClick={onClick}
             onDoubleClick={onDoubleClick}
             ref={avatarRef} size="lg"
-            className="avatar"
             as={motion.div} whileHover={{ scale: 2, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" }}
             transition={{ type: "spring", stiffness: 400, damping: 15 }}
-            src={avatarImg} circle />
+            src={avatarImg} 
+            className="avatar"
+            circle />
         <motion.div className="description" animate={aspectState} variants={variantsDescription}>
             <h1>PAFEPE</h1> <h3><b>BOOK!</b></h3>
         </motion.div>
