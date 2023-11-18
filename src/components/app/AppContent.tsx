@@ -11,7 +11,8 @@ type AppContentProps = {
 export default function AppContent({ headerMinHeight, footerMinHeight, children }: AppContentProps) {
     const winSize = useWindowSize();
     const contentMinHeight = (winSize.height ?? 0) - (headerMinHeight + footerMinHeight);
-    const className = "content-" + useTheme();
+    const {theme} = useTheme();
+    const className = "content-" + theme;
     return (<Content className={className} style={{ minHeight: contentMinHeight}}>
         {children}
     </Content>)

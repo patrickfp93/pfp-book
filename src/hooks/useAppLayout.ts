@@ -4,7 +4,7 @@ import AppLayoutProps from "../interfaces/AppLayoutProps";
 import useTheme from "./useTheme";
 
 export default function useAppLayout({ stateSize = "expand", children, style, ...props} : AppLayoutProps){
-    const classNameExtention = useTheme();
+    const {theme} = useTheme();
     const size = useWindowSize();    
     const variants: Variants = {
         expand: {
@@ -14,5 +14,5 @@ export default function useAppLayout({ stateSize = "expand", children, style, ..
             height: "0px",
         }
     }
-    return {classNameExtention,variants,stateSize,children, style, ...props}
+    return {classNameExtention:theme,variants,stateSize,children, style, ...props}
 }

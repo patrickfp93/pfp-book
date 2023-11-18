@@ -30,6 +30,9 @@ The primary goal of this website is to provide a holistic view of my skills and 
 - Refurbishment to the site's default theme.
 #### Update9 *(0.1.9)*
 - Added geometric pattern in SVG.
+### Alfa-002 - Menu Presentation
+#### Update10 *(0.2.10)*
+- Added theme control by redux. 
 
 ## 🛠️Technologies Used
 
