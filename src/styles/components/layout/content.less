@@ -1,6 +1,14 @@
 @import './../../variables.less';
 @import './base.less';
 
+.background-gradient-content(@base-color){
+    @core-alfa : 1;
+    @side-alfa : 0.9; 
+    background: linear-gradient(90deg, rgba(@base-color,@side-alfa)
+     0%, rgba(@base-color,@core-alfa) 10%, rgba(@base-color,@core-alfa) 50%,
+      rgba(@base-color,@core-alfa) 90%, rgba(@base-color,@side-alfa) 100%);
+}
+
 .content-base{
     width: 100%;
 }
@@ -16,5 +24,11 @@
 .content-high-contrast{
     .content-base;
     .background-pattern-collapse(@primary-color-high-contrast,@B700-high-contrast);
+}
+
+.page-content{
+    min-height: 100%;
+    @base-color : white;
+    .background-gradient-content(@base-color)
 }
 

@@ -1,16 +1,46 @@
 @import './../variables.less';
 
-.container{
+
+.background-gradient(@base-color){
+    background: linear-gradient(to top, rgba(@base-color,1) 0%,rgba(@base-color,0.75) 75% ,rgba(@base-color,0.5) 82.5%,rgba(@base-color,0.0) 100%);
+}
+
+.container {
     position: fixed;
 }
 
-.avatar{
-    background-color: rgba(0, 0, 0,0);
+.avatar {
+    background-color: rgba(0, 0, 0, 0);
 }
-.description{
+
+.description {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
+    justify-content: center;
+    /* Centraliza horizontalmente */
     align-items: center;
     text-align: center;
     text-shadow: 2px 2px 3px @B800;
+}
+
+.avatar-menu-base {
+    overflow: hidden;
+    position: fixed;
+    margin-left:40px;
+    border-radius:15px;
+    align-items: center;
+}
+
+.avatar-menu-light{
+    .avatar-menu-base;
+    *{color: @primary-color;}
+    background-color: rgba(@B200,0.75);
+}
+.avatar-menu-dark{
+    .avatar-menu-base;    
+    *{color: @primary-color-dark;}   
+    background-color: rgba(@B800-dark,0.75);
+}.avatar-menu-high-contrast{
+    .avatar-menu-base;    
+    *{color: @primary-color-high-contrast;}  
+    background-color: rgba(@B800-high-contrast,0.75);
 }

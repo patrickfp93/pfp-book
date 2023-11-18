@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./slices/themeSlice";
+import aspectReducer from "./slices/aspectSlice";
 
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
+    aspect : aspectReducer
   },
 })
 

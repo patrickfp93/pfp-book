@@ -4,7 +4,7 @@ import { RootState } from "..";
 export type AppThemeState = "light" | "dark" | "high-contrast";
 
 // Define the initial state using that type
-const initialState: AppThemeState = 'light';
+export const initialState: AppThemeState = 'light';
 
 export const themeSlice = createSlice<AppThemeState, SliceCaseReducers<AppThemeState>, "theme">({
   name: 'theme',
@@ -28,3 +28,5 @@ export const { toggleTheme } = themeSlice.actions
 export const selectTheme = (state: RootState) => state.theme
 
 export default themeSlice.reducer
+
+

@@ -1,21 +1,22 @@
-import { useMeasure, useWindowSize } from "@uidotdev/usehooks";
+import { useHover, useMeasure, useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import Avatar from "rsuite/Avatar";
 import avatarImg from "./../../assets/avatar-min.png";
-import LayoutAspectState from "../../interfaces/LayoutAspectState";
 import "./../../styles/components/avatar.less";
 import React from "react";
-import { Stack } from "rsuite";
-type AppAvatarProps = {
-    style?: React.CSSProperties
-    onShowMenu?: (value: boolean) => {},
-    showMenu?: boolean,
-    children?: React.ReactNode
-} & LayoutAspectState;
+import { Stack} from "rsuite";
+import useAspectAppLayout from "../../hooks/useAspectAppLayout";
+import AppBasicProps from "../../interfaces/AppBasicProps";
+import useThemeAppLayout from "../../hooks/useThemeAppLayout";
 
-export function AppAvatar({ aspectState = "expand", toggleAspectState, style, showMenu, children, onShowMenu }: AppAvatarProps) {
-    const [avatarRef, avatarSize] = useMeasure();
+export function AppAvatar({ style, children }: AppBasicProps) {
+    const [avatarHoverRef, hovering] = useHover();
+    var [avatarRef, avatarSize] = useMeasure();
     const winSize = useWindowSize();
+
+    const { aspectState, handleToggleAspect } = useAspectAppLayout();
+    const { themeState } = useThemeAppLayout();
+
     const avatarStyle: React.CSSProperties = {
         ...style,
         width: avatarSize.width ?? 0,
@@ -43,18 +44,32 @@ export function AppAvatar({ aspectState = "expand", toggleAspectState, style, sh
         }
     }
 
+    const variantsMenu: Variants = {
+        hide: {
+            width: 0,
+            minWidth: 0,
+        },
+        show: {
+            width: 'auto',
+            minWidth: 100,
+        }
+    };
+
+    const menuClassName = "avatar-menu-" + themeState
 
     const onClick = () => {
-        if (aspectState == "expand" && toggleAspectState) toggleAspectState()
-        else if (onShowMenu) onShowMenu(!(showMenu ?? true))
+        if (aspectState == "expand" && handleToggleAspect) handleToggleAspect()
+        //else if (onShowMenu) onShowMenu(!(showMenu ?? true))
     };
 
     const onDoubleClick = () => {
-        if (aspectState == "collapse" && toggleAspectState) toggleAspectState()
+        if (aspectState == "collapse" && handleToggleAspect) handleToggleAspect()
     };
 
-    return (<motion.div className={"container"} style={avatarStyle} transition={{ type: "spring", stiffness: 200, damping: 20 }} variants={variantsContainer} animate={aspectState}>
-        <Stack>
+    const menuAnimateComand = (aspectState == "collapse") ? "show" : hovering ? "show" : "hide";
+
+    return (<motion.div layout className={"container"} style={avatarStyle} transition={{ type: "spring", stiffness: 200, damping: 20 }} variants={variantsContainer} animate={aspectState}>
+        <Stack ref={avatarHoverRef}>
             <Avatar onClick={onClick}
                 onDoubleClick={onDoubleClick}
                 ref={avatarRef} size="lg"
@@ -64,8 +79,8 @@ export function AppAvatar({ aspectState = "expand", toggleAspectState, style, sh
                 className="avatar"
                 style={{ backgroundColor: "rgba(0,0,0,0)" }}
                 circle />
-                
-            <Stack as={motion.div} style={{ minWidth: 100, position: "fixed", marginLeft:10, backgroundColor:"#654321", borderRadius:"5px" }} >
+
+            <Stack layout as={motion.div} className={menuClassName} variants={variantsMenu} animate={menuAnimateComand}>
                 {children}
             </Stack>
         </Stack>

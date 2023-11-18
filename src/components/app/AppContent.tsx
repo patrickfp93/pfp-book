@@ -1,5 +1,5 @@
-import { Content } from "rsuite";
-import useTheme from "../../hooks/useTheme";
+import { Col, Content, FlexboxGrid } from "rsuite";
+import useThemeAppLayout from "../../hooks/useThemeAppLayout";
 import { useWindowSize } from "@uidotdev/usehooks";
 import "./../../styles/components/layout/content.less";
 
@@ -11,9 +11,11 @@ type AppContentProps = {
 export default function AppContent({ headerMinHeight, footerMinHeight, children }: AppContentProps) {
     const winSize = useWindowSize();
     const contentMinHeight = (winSize.height ?? 0) - (headerMinHeight + footerMinHeight);
-    const {theme} = useTheme();
-    const className = "content-" + theme;
-    return (<Content className={className} style={{ minHeight: contentMinHeight}}>
-        {children}
+    const { themeState } = useThemeAppLayout();
+    const className = "content-" + themeState;
+    return (<Content className={className}>
+        <FlexboxGrid justify="center">
+            <FlexboxGrid.Item className="page-content" style={{ minHeight: contentMinHeight }} as={Col} colspan={24}  md={20} lg={16}>{children}</FlexboxGrid.Item>
+        </FlexboxGrid>
     </Content>)
 }
