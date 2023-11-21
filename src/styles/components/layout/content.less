@@ -2,16 +2,19 @@
 @import './base.less';
 
 .background-gradient-content(@base-color){
-    @core-alfa : 1;
-    @side-alfa : 0.9; 
+    @core-alfa : 0.9;
+    @side-alfa : 0.7; 
+    @mid-alfa : (@core-alfa+ @side-alfa)/2;
     background: linear-gradient(90deg, rgba(@base-color,@side-alfa)
-     0%, rgba(@base-color,@core-alfa) 10%, rgba(@base-color,@core-alfa) 50%,
-      rgba(@base-color,@core-alfa) 90%, rgba(@base-color,@side-alfa) 100%);
+     0%, rgba(@base-color,@mid-alfa) 10%, rgba(@base-color,@core-alfa) 25%,
+     rgba(@base-color,@core-alfa) 75%,
+      rgba(@base-color,@mid-alfa) 90%, rgba(@base-color,@side-alfa) 100%);
 }
-
 .content-base{
     width: 100%;
+    box-shadow: 10px 10px 5px #333;
 }
+
 .content-light{
     .content-base;
     .background-pattern-collapse(@primary-color,@B700);
@@ -31,4 +34,5 @@
     @base-color : white;
     .background-gradient-content(@base-color)
 }
+
 

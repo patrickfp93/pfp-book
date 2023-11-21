@@ -1,19 +1,19 @@
-import { useHover, useMeasure, useWindowSize } from "@uidotdev/usehooks";
+import { useFavicon, useHover, useMeasure, useWindowSize } from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import Avatar from "rsuite/Avatar";
 import avatarImg from "./../../assets/avatar-min.png";
 import "./../../styles/components/avatar.less";
 import React from "react";
-import { Stack} from "rsuite";
+import { Stack } from "rsuite";
 import useAspectAppLayout from "../../hooks/useAspectAppLayout";
 import AppBasicProps from "../../interfaces/AppBasicProps";
 import useThemeAppLayout from "../../hooks/useThemeAppLayout";
 
 export function AppAvatar({ style, children }: AppBasicProps) {
+    useFavicon(avatarImg);
     const [avatarHoverRef, hovering] = useHover();
     var [avatarRef, avatarSize] = useMeasure();
     const winSize = useWindowSize();
-
     const { aspectState, handleToggleAspect } = useAspectAppLayout();
     const { themeState } = useThemeAppLayout();
 
@@ -22,53 +22,19 @@ export function AppAvatar({ style, children }: AppBasicProps) {
         width: avatarSize.width ?? 0,
         height: avatarSize.height ?? 0,
     };
-    const variantsContainer: Variants = {
-        expand: {
-            left: ((winSize.width ?? 0) / 2) - (avatarSize.width ?? 0) / 2,
-            top: ((winSize.height ?? 0) / 2) - (avatarSize.height ?? 0) / 2,
-        },
-        collapse: {
-            left: 0,
-            top: 20,
-        }
-    }
-    const variantsDescription: Variants = {
-        expand: {
-            width: "100%",
-            height: "100%",
-        },
-        collapse: {
-            width: "0%",
-            height: "0%",
-            display: "none"
-        }
-    }
-
-    const variantsMenu: Variants = {
-        hide: {
-            width: 0,
-            minWidth: 0,
-        },
-        show: {
-            width: 'auto',
-            minWidth: 100,
-        }
-    };
-
-    const menuClassName = "avatar-menu-" + themeState
-
+    const menuClassName = "avatar-menu-" + themeState;
     const onClick = () => {
         if (aspectState == "expand" && handleToggleAspect) handleToggleAspect()
-        //else if (onShowMenu) onShowMenu(!(showMenu ?? true))
     };
-
     const onDoubleClick = () => {
         if (aspectState == "collapse" && handleToggleAspect) handleToggleAspect()
     };
-
     const menuAnimateComand = (aspectState == "collapse") ? "show" : hovering ? "show" : "hide";
 
-    return (<motion.div layout className={"container"} style={avatarStyle} transition={{ type: "spring", stiffness: 200, damping: 20 }} variants={variantsContainer} animate={aspectState}>
+    return (
+    <motion.div layout className={"container"} style={avatarStyle}
+        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+        variants={variantsContainer(winSize,avatarSize)} animate={aspectState}>
         <Stack ref={avatarHoverRef}>
             <Avatar onClick={onClick}
                 onDoubleClick={onDoubleClick}
@@ -89,3 +55,41 @@ export function AppAvatar({ style, children }: AppBasicProps) {
         </motion.div>
     </motion.div>);
 }
+
+
+type Size = { width: number | null; height: number | null; }
+
+const variantsContainer = (winSize: Size, avatarSize : Size) => {
+    return {
+        expand: {
+            left: ((winSize.width ?? 0) / 2) - (avatarSize.width ?? 0) / 2,
+            top: ((winSize.height ?? 0) / 2) - (avatarSize.height ?? 0) / 2,
+        },
+        collapse: {
+            left: 0,
+            top: 20,
+        }
+    };
+}
+const variantsDescription: Variants = {
+    expand: {
+        width: "100%",
+        height: "100%",
+    },
+    collapse: {
+        width: "0%",
+        height: "0%",
+        display: "none"
+    }
+}
+
+const variantsMenu: Variants = {
+    hide: {
+        width: 0,
+        minWidth: 0,
+    },
+    show: {
+        width: 'auto',
+        minWidth: 100,
+    }
+};

@@ -15,7 +15,7 @@ export default function AppContent({ headerMinHeight, footerMinHeight, children 
     const className = "content-" + themeState;
     return (<Content className={className}>
         <FlexboxGrid justify="center">
-            <FlexboxGrid.Item className="page-content" style={{ minHeight: contentMinHeight }} as={Col} colspan={24}  md={20} lg={16}>{children}</FlexboxGrid.Item>
+            <FlexboxGrid.Item className="page-content" style={{ minHeight: contentMinHeight, background: 'var(@B700)' }} as={Col} colspan={24}  md={20} lg={16}>{children}</FlexboxGrid.Item>
         </FlexboxGrid>
     </Content>)
 }
