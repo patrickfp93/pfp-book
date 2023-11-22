@@ -1,4 +1,4 @@
-@import './../variables.less';
+@import './../../styles/variables.less';
 
 
 .background-gradient(@base-color) {
@@ -6,24 +6,27 @@
 }
 
 .container {
-    position: fixed;    
-    /*display: flex;
-    justify-content: center;
-    align-items: center;*/
+    position: fixed;   
 }
 
 .avatar {
+    //@duration : 0.2s;
+    //transition: background-color @duration, transform @duration, box-shadow @duration, scale @duration;
     background-color: rgba(0, 0, 0, 0);
-    background-size: 200% 200%;
-    background-position: top left;
-    background-clip: padding-box;
-    /* Importante para pegar apenas o conteúdo da div da frente */
 }
+
+/*.avatar:hover {
+    scale: 2;
+    top: 0;
+    left: 10;
+    box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.4);    
+    background-color: rgba(255, 255, 255, 0.4);
+}*/
+
 
 .description {
     display: flex;
     justify-content: center;
-    /* Centraliza horizontalmente */
     align-items: center;
     text-align: center;
     text-shadow: 2px 2px 3px @B800;

@@ -1,8 +1,8 @@
+import "./index.less";
 import { motion } from "framer-motion";
 import Footer from "rsuite/Footer";
-import AppBasicProps from "../../interfaces/AppBasicProps";
-import "./../../styles/components/layout/footer.less";
-import useAppLayout from "../../hooks/useAppLayout";
+import AppBasicProps from "../../../interfaces/AppBasicProps";
+import useAppLayout from "../../../services/hooks/useAppLayout";
 export default function AppFooter(super_props : AppBasicProps) {
     const {classNameExtention,variants,aspectState,children, style, ...props} = useAppLayout(super_props);
     const className = "footer-" + classNameExtention;

@@ -1,12 +1,11 @@
 import { Container, CustomProvider } from "rsuite";
 import { ptBR } from "rsuite/esm/locales";
-import AppFooter from "./components/app/AppFooter";
-import AppHeader from "./components/app/AppHeader";
-import AppMenu from "./components/app/AppMenu";
-import "./styles/components/layout/content.less";
-import AppContent from "./components/app/AppContent";
-import AppReferences from "./components/app/AppReferences";
-import useThemeAppLayout from "./hooks/useThemeAppLayout";
+import AppFooter from "./components/layout/Footer";
+import AppHeader from "./components/layout/Header";
+import AppMenu from "./components/view/Menu";
+import AppContent from "./components/layout/Content";
+import AppReferences from "./components/view/References";
+import useThemeAppLayout from "./services/hooks/useThemeAppLayout";
 
 export default function App() {
     const {themeState} = useThemeAppLayout();

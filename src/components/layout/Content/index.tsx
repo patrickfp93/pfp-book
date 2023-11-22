@@ -1,7 +1,7 @@
 import { Col, Content, FlexboxGrid } from "rsuite";
-import useThemeAppLayout from "../../hooks/useThemeAppLayout";
+import useThemeAppLayout from "../../../services/hooks/useThemeAppLayout";
 import { useWindowSize } from "@uidotdev/usehooks";
-import "./../../styles/components/layout/content.less";
+import "./index.less";
 
 type AppContentProps = {
     headerMinHeight: number;

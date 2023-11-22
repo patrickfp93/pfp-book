@@ -1,11 +1,11 @@
+import "./index.less";
 import { useFavicon, useHover} from "@uidotdev/usehooks";
 import { Variants, motion } from "framer-motion";
 import Avatar from "rsuite/Avatar";
-import "./../../styles/components/avatar.less";
 import { FlexboxGrid, Stack } from "rsuite";
-import useAspectAppLayout from "../../hooks/useAspectAppLayout";
-import AppBasicProps from "../../interfaces/AppBasicProps";
-import useThemeAppLayout from "../../hooks/useThemeAppLayout";
+import useAspectAppLayout from "../../../services/hooks/useAspectAppLayout";
+import AppBasicProps from "../../../interfaces/AppBasicProps";
+import useThemeAppLayout from "../../../services/hooks/useThemeAppLayout";
 
 const avatarImg = "./avatar-min.png";
 
@@ -22,21 +22,18 @@ export function AppAvatar({ style, children }: AppBasicProps) {
         if (aspectState == "collapse" && handleToggleAspect) handleToggleAspect()
     };
     const menuAnimateComand = (aspectState == "collapse") ? "show" : hovering ? "show" : "hide";
-    const avatarHover = { scale: 2, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)" };
+    const avatarHover = { scale: 2, y: 0, x: 10, boxShadow: "0px 4px 4px 1px rgba(0, 0, 0, 0.4)", backgroundColor : "rgba(255,255,255,0.4)" };
     const transition = { type: "spring", stiffness: 400, damping: 15 };
     return (
         <motion.div layout className={"container"} style={style}
             transition={{ type: "spring", stiffness: 200, damping: 20 }}
             variants={variantsContainer} animate={aspectState}>
             <FlexboxGrid ref={avatarHoverRef} justify="center"> 
-                <FlexboxGrid.Item colspan={6}><Avatar onClick={onClick}
-                    draggable={false}
-                    onDoubleClick={onDoubleClick}
-                    size="lg"
-                    as={motion.div} whileHover={avatarHover}
-                    transition={transition} src={avatarImg} className="avatar"
-                    style={{ backgroundColor: "rgba(0,0,0,0)" }}
-                    circle />
+                <FlexboxGrid.Item colspan={6}>
+                    <Avatar onClick={onClick} draggable={false} onDoubleClick={onDoubleClick}
+                    size="lg"as={motion.div} transition={transition} src={avatarImg} className="avatar"
+                    style={{ backgroundColor: "rgba(0,0,0,0.0)" }}
+                    whileHover={avatarHover} circle />
                     <Stack layout as={motion.div} className={menuClassName} variants={variantsMenu} animate={menuAnimateComand}>
                         {children}
                     </Stack>

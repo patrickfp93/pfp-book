@@ -1,6 +1,6 @@
 import { useWindowSize } from "@uidotdev/usehooks";
 import { Variants } from "framer-motion";
-import AppLayoutProps from "../interfaces/AppBasicProps";
+import AppLayoutProps from "../../interfaces/AppBasicProps";
 import useThemeAppLayout from "./useThemeAppLayout";
 import useAspect from "./useAspectAppLayout";
 

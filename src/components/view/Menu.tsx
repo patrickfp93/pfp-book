@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { AppAvatar } from "./AppAvatar";
+import { AppAvatar } from "./Avatar";
 import ResponsiveNav from '@rsuite/responsive-nav';
 import { IconButton, Tooltip, Whisper } from "rsuite";
 import { MdLightbulbOutline as MDDark, MdLightbulb as MDLight, MdLightbulbCircle as MDHighContrast } from "react-icons/md";
-import useThemeAppLayout from "../../hooks/useThemeAppLayout";
-import useAspectAppLayout from "../../hooks/useAspectAppLayout";
+import useThemeAppLayout from "../../services/hooks/useThemeAppLayout";
+import useAspectAppLayout from "../../services/hooks/useAspectAppLayout";
 
 type AppMenuProps = {
     style?: React.CSSProperties
