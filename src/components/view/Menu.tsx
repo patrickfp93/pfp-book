@@ -6,20 +6,12 @@ import { MdLightbulbOutline as MDDark, MdLightbulb as MDLight, MdLightbulbCircle
 import useThemeAppLayout from "../../services/hooks/useThemeAppLayout";
 import useAspectAppLayout from "../../services/hooks/useAspectAppLayout";
 
-type AppMenuProps = {
-    style?: React.CSSProperties
-}
-
-export default function AppMenu({ style }: AppMenuProps) {
-    const mainStyle: React.CSSProperties = {
-        zIndex: 9999,
-        ...style
-    }
+export default function AppMenu() {
     const { themeState, handleToggleTheme } = useThemeAppLayout();
     const iconTheme = themeState == 'light' ? <MDDark /> : (themeState == 'dark' ? <MDHighContrast /> : <MDLight />)
     const { aspectState } = useAspectAppLayout();
     const [activeKey, setActiveKey] = useState<number | string | undefined>('A');
-    return (<div style={mainStyle}>
+    return (<div>
         <AppAvatar>
             <Whisper followCursor speaker={<Tooltip>Clique mudar o tema</Tooltip>}>
                 <IconButton appearance="subtle" onClick={() => handleToggleTheme()} circle icon={iconTheme} size="sm" />
