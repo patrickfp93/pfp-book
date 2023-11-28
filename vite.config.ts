@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
-
-const ident = "?inline";
+import lessToJson from "./plugins/lessToJson";
 
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),lessToJson(true)],
   css: {
     preprocessorOptions: {
       less: {
@@ -17,3 +16,7 @@ export default defineConfig({
     },
   },
 })
+
+
+
+
