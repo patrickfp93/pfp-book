@@ -5,7 +5,6 @@ import index from "./index.less?inline";
 import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useToggleSpring";
 const style = JSON.parse(index);
 const Div = animated.div;
-//Navegator is soft Component
 export default function Navegator() {
     const { aspectState, handleToggleAspect } = useAspectAppLayout();
     //container

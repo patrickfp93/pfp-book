@@ -61,7 +61,7 @@ const lessToJson = (removeAcronymPx) => {
             }
           });
           let newCode = `${JSON.stringify(stylesObject)}`;
-          console.log("stylesObject", stylesObject)
+          //console.log("stylesObject", stylesObject)
           return {
             code: newCode,
             map: null,

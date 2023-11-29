@@ -2,30 +2,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
 }
 
 .container{
+    width: auto;
     position: fixed;
     display: flexbox;
-    background-color: aqua;
     left: 50%;
     top: 50%;
-    width: 1%;
-    translate: -50% -50%;
+    x: -50%;
+    y: -50%;
 }
 .container-collapse{
+    width: 100%;
     .container;
     left: 0%;
     top: 0%;
-    width: 100%;
-    translate: 0% 0%;
+    x: 0%;
+    y: 0%;
 }
 
 .top{
     display: inline-flex;
     background-color: blueviolet;
-    width: 10vw;
+    width: 10vw; 
 }
 
 .top-collapse{
@@ -35,7 +35,6 @@
 
 .down{
     .base-content;
-    translate: -50% -100%;
     width: 200px;
     height: 100px;
     overflow: hidden;
@@ -49,8 +48,9 @@
 .logo{
     .base-content;
     min-width: 100px;
-    min-height: 100px;
+    height: 100px;
     background-color: brown;
+    flex-grow: 0;
 }
 
 .menu{
@@ -68,7 +68,7 @@
     min-width: 100px;
     min-height: 100px;
     background-color: chocolate;
-    width: 100px;
+    flex-grow: 0;
 }
 
 .hider{
