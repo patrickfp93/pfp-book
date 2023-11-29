@@ -1,21 +1,18 @@
-import { useWindowSize } from "@uidotdev/usehooks";
-import { Variants } from "framer-motion";
 import AppLayoutProps from "../../interfaces/AppBasicProps";
 import useThemeAppLayout from "./useThemeAppLayout";
 import useAspect from "./useAspectAppLayout";
+import { ToogleSpringState } from "./useToggleSpring";
 
-export default function useAppLayout({ children, style, ...props} : AppLayoutProps){
+export default function useAppLayout({ children} : AppLayoutProps){
     const {themeState} = useThemeAppLayout();
-    const size = useWindowSize();
-    const {aspectState} = useAspect();
-    
-    const variants: Variants = {
-        expand: {
-            height: ((size.height ?? 0) / 2) + "px",
+    const {aspectState} = useAspect();    
+    const variants: ToogleSpringState = {
+        start: {
+            height: "50vh",
         },
-        collapse: {
-            height: "0px",
+        end: {
+            height: "0vh",
         }
     }
-    return {classNameExtention:themeState,variants,children,aspectState, style, ...props}
+    return {classNameExtention:themeState,variants,children,aspectState}
 }

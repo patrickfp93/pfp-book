@@ -1,20 +1,23 @@
 import "./index.less";
-import { motion } from "framer-motion";
 import Footer from "rsuite/Footer";
 import AppBasicProps from "../../../interfaces/AppBasicProps";
 import useAppLayout from "../../../services/hooks/useAppLayout";
-import { TRANSTION_DEFAULT } from "../../../services/context";
+import { animated } from "@react-spring/web";
+import useToggleSpring from "../../../services/hooks/useToggleSpring";
+const Div = animated.div;
 export default function AppFooter(super_props : AppBasicProps) {
-    const {classNameExtention,variants,aspectState,children, style, ...props} = useAppLayout(super_props);
+    const {classNameExtention,variants,aspectState,children} = useAppLayout(super_props);
     const className = "footer-" + classNameExtention;
     const smokerClassName = "footer-smoker-" + classNameExtention;
     const backClass = "layout-base-back";
+    const style = useToggleSpring({states: variants, value: aspectState === "expand" });
+
     return (<>
-        <motion.div className={className} variants={variants} style={style} animate={aspectState} transition={TRANSTION_DEFAULT}>
+        <Div className={className} style={style}>
         <div className={smokerClassName}>
             {children}
         </div>
-        </motion.div>
-        <Footer className={backClass} {...props}></Footer>
+        </Div>
+        <Footer className={backClass} style={{height:30}}></Footer>
     </>);
 }

@@ -1,8 +1,8 @@
 import useAspectAppLayout from "../../../services/hooks/useAspectAppLayout"
 import { animated} from '@react-spring/web';
 //import "./index.less";
-import index from "./index.less?inline";
 import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useToggleSpring";
+import index from "./index.less?inline";
 const style = JSON.parse(index);
 const Div = animated.div;
 export default function Navegator() {

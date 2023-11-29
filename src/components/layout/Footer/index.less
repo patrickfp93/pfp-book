@@ -4,13 +4,20 @@
     background: linear-gradient(to top, rgba(@bottom-color,1) 0%,rgba(@bottom-color,0.75) 75% ,rgba(@bottom-color,0.5) 82.5%,rgba(@bottom-color,0.0) 100%);
 }
 
+.footer-base{
+    //height : 50vh;
+    min-height: 30px;
+}
+
 .footer-front{
+    .footer-base;
     .layout-base-front; 
     bottom: 0;
     z-index: 9990;
 }
 
 .footer-light{
+    .footer-base;
     .footer-front;
     .background-pattern-expand(@B700,@primary-color);
     color: @primary-color;
@@ -19,6 +26,7 @@
     }
 }
 .footer-dark{
+    .footer-base;
     .footer-front;
     .background-pattern-expand(@B700-dark,@primary-color-dark);
     color: @primary-color-dark;
@@ -27,6 +35,7 @@
     }
 }
 .footer-high-contrast{
+    .footer-base;
     .footer-front;
     .background-pattern-expand(@B700-high-contrast,@primary-color-high-contrast);
     background-position: 50px 50px;
