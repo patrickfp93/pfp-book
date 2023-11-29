@@ -22,11 +22,11 @@ export default function Navegator() {
     return (<Div style={containerStyle} onClick={handleToggleAspect}>
         <Div style={topStyle}>
             <Div style={style.logo}><Logo/></Div>
-            <Div style={initialsStyle}><h1>PFP</h1><h3>DEV</h3></Div>
+            <Div style={initialsStyle}><h1><b>PFP</b></h1><h3><i>DEV</i></h3></Div>
             <Div style={menuStyle}> Menu</Div>
         </Div>
         <Div style={downStyle}>
-        <h1>Pafepe</h1><h3>DEV</h3>
+        <h1><b>PAFEPE</b></h1><h4><i>DEV</i></h4>
         </Div>
     </Div>)
 }
