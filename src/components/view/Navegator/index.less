@@ -2,33 +2,41 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
 }
 
 .container{
     position: fixed;
-    display: block;
+    display: flexbox;
+    background-color: aqua;
     left: 50%;
     top: 50%;
+    width: 1%;
+    translate: -50% -50%;
 }
 .container-collapse{
     .container;
-    left: 0px;
-    top: 0px;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    translate: 0% 0%;
 }
 
 .top{
-    translate: -50% -100%;
     display: inline-flex;
+    background-color: blueviolet;
+    width: 10vw;
 }
 
 .top-collapse{
     .top;
-    translate: 0% 0%;
+    width: 100vw;
 }
 
 .down{
     .base-content;
     translate: -50% -100%;
+    width: 200px;
     height: 100px;
     overflow: hidden;
     background-color: blue;
@@ -47,11 +55,11 @@
 
 .menu{
     .base-content;
-    width: 100px;
     min-width:100px;
     min-height: 100px;
     background-color: aqua;
     overflow: hidden;
+    flex-grow: 1;
 }
 
 .initials{

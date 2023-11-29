@@ -1,45 +1,57 @@
 import useAspectAppLayout from "../../../services/hooks/useAspectAppLayout"
+import { animated} from '@react-spring/web';
 //import "./index.less";
 import index from "./index.less?inline";
-import { Variants, motion } from "framer-motion";
+import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useToggleSpring";
 const style = JSON.parse(index);
-const Div = motion.div;
+const Div = animated.div;
 //Navegator is soft Component
 export default function Navegator() {
     const { aspectState, handleToggleAspect } = useAspectAppLayout();
-    return (<Div variants={containerV} animate={aspectState} onClick={handleToggleAspect}>
-        <Div variants={topV} animate={aspectState} style={{display:"inline-flex"}}>
+    //container
+    const containerStyle = useToggleSpring({states: containerV, value: aspectState === "expand" });
+    //top
+    const topStyle = useToggleSpring({states: topV, value: aspectState === "expand" });
+    //initials
+    const initialsStyle = useToggleSpring({states: initialsV, value: aspectState === "expand" });
+    //menu
+    const menuStyle = useToggleSpring({states: menuV, value: aspectState === "expand" });
+    //menu
+    const downStyle = useToggleSpring({states: downV, value: aspectState === "expand" });
+
+    return (<Div style={containerStyle} onClick={handleToggleAspect}>
+        <Div style={topStyle}>
             <Div style={style.logo}>Logo</Div>
-            <Div variants={menuV} animate={aspectState}> Menu</Div>
-            <Div variants={initialsV} animate={aspectState}>initials</Div>
+            <Div style={initialsStyle}>initials</Div>
+            <Div style={menuStyle}> Menu</Div>
         </Div>
-        <Div variants={downV} animate={aspectState}>
+        <Div style={downStyle}>
 
         </Div>
     </Div>)
 }
 
-const containerV: Variants = {
-    expand: style.container,
-    collapse: style.containerCollapse
+const containerV : ToogleSpringState = {
+    start: style.container,
+    end: style.containerCollapse
 }
 
-const topV : Variants ={
-    expand : style.top,
-    collape : {...style.topCollapse}
+const topV : ToogleSpringState = {
+    start: style.top,
+    end: style.topCollapse
 }
 
-const menuV: Variants = {
-    expand: style.menu,
-    collapse: { ...style.menu, ...style.hider }
+const menuV: ToogleSpringState = {
+    start: style.menu,
+    end: { ...style.menu, }
 }
 
-const initialsV = {
-    expand: { ...style.initials, ...style.hider },
-    collapse: style.initials,
+const initialsV : ToogleSpringState = {
+    start: { ...style.initials, ...style.hider },
+    end: style.initials,
 }
 
-const downV = {
-    expand: style.down,
-    collapse : style.downCollapse
+const downV : ToogleSpringState = {
+    start: style.down,
+    end: style.downCollapse
 }
