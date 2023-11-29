@@ -3,6 +3,7 @@ import { animated} from '@react-spring/web';
 //import "./index.less";
 import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useToggleSpring";
 import index from "./index.less?inline";
+import Logo from "../Logo";
 const style = JSON.parse(index);
 const Div = animated.div;
 export default function Navegator() {
@@ -20,12 +21,12 @@ export default function Navegator() {
 
     return (<Div style={containerStyle} onClick={handleToggleAspect}>
         <Div style={topStyle}>
-            <Div style={style.logo}>Logo</Div>
-            <Div style={initialsStyle}>initials</Div>
+            <Div style={style.logo}><Logo/></Div>
+            <Div style={initialsStyle}><h1>PFP</h1><h3>DEV</h3></Div>
             <Div style={menuStyle}> Menu</Div>
         </Div>
         <Div style={downStyle}>
-
+        <h1>Pafepe</h1><h3>DEV</h3>
         </Div>
     </Div>)
 }
