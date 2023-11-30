@@ -2,7 +2,7 @@ import { Divider, Stack } from "rsuite";
 import { FaReact } from "react-icons/fa";
 import { SiTypescript, SiVite, SiVercel } from "react-icons/si";
 
-export default function AppReferences() {
+export default function References() {
   return (
     <Stack
       spacing={6}

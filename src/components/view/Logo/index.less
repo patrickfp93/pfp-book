@@ -1,15 +1,37 @@
 @import "./../../styles/variables.less";
 
-.container{
+.container {
     width: 100px;
     height: 100px;
 }
 
-.line{
-    stroke: @B700;
+.line {
+    &-light {
+        stroke: @B700;
+    }
+
+    &-dark {
+        stroke: @B700-dark;
+    }
+
+    &-high-contrast {
+        stroke: @B700-high-contrast;
+    }
 }
 
-.fill{
-    fill: lighten(@primary-color,10%);
-    stroke: lighten(@primary-color,10%);
+.fill {
+    &-light {
+        fill: lighten(@primary-color, -10%);
+        stroke: lighten(@primary-color, -10%);
+    }
+
+    &-dark {
+        fill: lighten(@primary-color-dark, 10%);
+        stroke: lighten(@primary-color-dark, 10%);
+    }
+
+    &-high-contrast {
+        fill: lighten(@primary-color-high-contrast, -10%);
+        stroke: lighten(@primary-color-high-contrast, -10%);
+    }
 }

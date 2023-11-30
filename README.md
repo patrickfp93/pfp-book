@@ -35,6 +35,10 @@ The primary goal of this website is to provide a holistic view of my skills and 
 - Added theme control by redux. 
 #### Update11 *(0.2.11)*
 - Add menu.
+#### Update12 *(0.2.12)*
+- Animation library changes from framer-motion to react Spring;
+- Avatar component replacement for FlexMenu;
+- Creation and modification of support hooks.
 
 ## 🛠️Technologies Used
 
