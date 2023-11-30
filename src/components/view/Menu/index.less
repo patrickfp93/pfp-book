@@ -1,6 +1,7 @@
 @import "./../../styles/variables.less";
 
 .menu{
+    width: auto;
     display: flex;
     border-radius: 20px 20px 0px 20px;
     &.light{        
@@ -13,4 +14,12 @@
     &.high-contrast {
         background-color: @B600-high-contrast;
     }
+}
+
+.sm-menu{
+    position: fixed;
+}
+.container{
+    width: (100vw - 200px);
+    min-width: 150px; 
 }

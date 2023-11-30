@@ -6,20 +6,24 @@ import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useT
 import style from './index.less.ts'
 import Logo from "../Logo";
 import Menu from "../Menu";
+import { useWindowSize } from "@uidotdev/usehooks";
 //const style = JSON.parse(index);
 const Div = animated.div;
 export default function Navegator() {
     const { aspectState, handleToggleAspect } = useAspectAppLayout();
+    const smWidth = 580;
+    const {width: widthWin} = useWindowSize();
     //container
     const containerStyle = useToggleSpring({states: containerV, value: aspectState === "expand" });
     //top
     const topStyle = useToggleSpring({states: topV, value: aspectState === "expand" });
     //initials
-    const initialsStyle = useToggleSpring({states: initialsV, value: aspectState === "expand" });
+    const initialsStyle = useToggleSpring({states: initialsV, value: aspectState === "expand" || ((widthWin?? smWidth) < smWidth) });
     //menu
     const menuStyle = useToggleSpring({states: menuV, value: aspectState === "expand" });
     //down
     const downStyle = useToggleSpring({states: downV, value: aspectState === "expand" });
+
 
     return (<Div style={containerStyle}>
         <Div style={topStyle}>

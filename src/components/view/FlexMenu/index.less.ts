@@ -24,7 +24,7 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 250,
+    width: 230,
     height: 100,
     overflow: 'hidden'
   },
@@ -41,7 +41,7 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    minWidth: 100,
+    minWidth: 150,
     height: 100,
     flexGrow: '0'
   },
@@ -49,7 +49,7 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'left',
-    marginLeft: 30,
+    marginLeft: 0,
     minWidth: 100,
     minHeight: 100,
     overflow: 'hidden',
@@ -60,11 +60,12 @@ export default {
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
-    minWidth: 100,
+    minWidth: 150,
     minHeight: 100,
     width: 150,
     flexGrow: '0',
-    textShadow: 2
+    textShadow: 2,
+    marginRight: 5
   },
   hider: { width: 0, minWidth: 0 }
 }
