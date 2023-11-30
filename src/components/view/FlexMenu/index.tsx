@@ -2,10 +2,11 @@ import useAspectAppLayout from "../../../services/hooks/useAspectAppLayout"
 import { animated} from '@react-spring/web';
 //import "./index.less";
 import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useToggleSpring";
-import index from "./index.less?inline";
+//import index from "./index.less?inline";
+import style from './index.less.ts'
 import Logo from "../Logo";
 import Menu from "../Menu";
-const style = JSON.parse(index);
+//const style = JSON.parse(index);
 const Div = animated.div;
 export default function Navegator() {
     const { aspectState, handleToggleAspect } = useAspectAppLayout();
