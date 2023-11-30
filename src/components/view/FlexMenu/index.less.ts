@@ -24,7 +24,7 @@ export default {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: 200,
+    width: 250,
     height: 100,
     overflow: 'hidden'
   },
