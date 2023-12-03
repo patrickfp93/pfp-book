@@ -1,4 +1,5 @@
 import less from 'less';
+import fs from "fs";
 
 function nomarlizeJsonItemName(str) {
   // Dividir a string pelo traço
@@ -26,7 +27,7 @@ const lessToJson = (removeAcronymPx) => {
   return {
     name: 'less-to-json',
     async transform(code, id) {
-      if (id.endsWith('.less?inline')) {
+      if (id.endsWith('.module.less')) {
         try {
           // Compilar o LESS para CSS
           const output = await less.render(code);
@@ -60,8 +61,8 @@ const lessToJson = (removeAcronymPx) => {
               }
             }
           });
-          let newCode = `${JSON.stringify(stylesObject)}`;
-          console.log("stylesObject", stylesObject)
+          //console.log("stylesObject", stylesObject)
+          let newCode = JSON.stringify(stylesObject);
           return {
             code: newCode,
             map: null,
@@ -78,3 +79,46 @@ const lessToJson = (removeAcronymPx) => {
   };
 };
 export default lessToJson;
+
+
+const writeStep2 = (dataLess,cssFileName) => lessToJson(true).transform(dataLess,cssFileName).then((dataJson)=>{
+  const pathnewfile = cssFileName + ".json";
+  fs.access(pathnewfile, fs.constants.F_OK, (err) => {
+    if (err) {
+      fs.writeFile(pathnewfile, dataJson.code, (err) => {
+        if (!err){
+          console.log('File created successfully!');
+        }
+      });
+      return;
+    }  
+    // Obter a data de modificação do arquivo
+    fs.stat(pathnewfile, (err, stats) => {
+      if (err) {
+        console.error('Error getting file information:', err);
+        return;
+      }      
+      const jsonTime = stats.mtime;
+      fs.stat(cssFileName,(err,stats)=>{
+        if (err) {
+          console.error('Error getting file information:', err);
+          return;
+        }            
+        const lessTime = stats.mtime;
+        if(lessTime !== jsonTime){
+          writeStep2(dataLess,cssFileName);
+        }
+      });        
+    });
+  }); 
+})
+
+export function writeJsonFile(cssFileName){
+  fs.readFile(cssFileName, 'utf8', (err, dataLess) => {
+    if (err) {
+      console.error('Erro ao ler o arquivo:', err);
+      return;
+    }
+    writeStep2(dataLess,cssFileName);
+  });
+}
