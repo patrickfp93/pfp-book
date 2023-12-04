@@ -4,7 +4,6 @@ import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useT
 import "./index.less";
 import style from "./index.less.ts";
 import Logo from "../Logo/index.tsx";
-import { Avatar } from "rsuite";
 import avatarImg from "./../../../assets/img/avatar-litle-min-min.png";
 
 const Div = animated.div;
