@@ -11,13 +11,13 @@ export type ToogleSpringState = {
     end : any 
 }
 
-export default function useToggleSpring({states :{start,end}, value}: ToggleSpringProp) { 
+export default function useToggleSpring({states :{start,end}, value: condition}: ToggleSpringProp) { 
     const actionConfigSpring = () => ({ ...start, config: { precision: 0.0001 } });   
     const [style, api] = useSpring(actionConfigSpring);
     useEffect(() => {
-        const from = (value) ? end : start;
-        const to = (value) ? start : end;
+        const from = (condition) ? end : start;
+        const to = (condition) ? start : end;
         api.start({ from, to, });
-    }, [value]);
+    }, [condition]);
     return style;
 }

@@ -1,0 +1,46 @@
+.container {
+    width: 100px;
+    height: 100px;
+}
+
+.basic {
+    .container;
+    position: absolute;
+}
+
+
+.logo {
+    .basic;
+    z-index: 1;
+}
+
+.logo-collapse {
+    .logo;
+    opacity: 1;
+}
+
+.logo-expand {
+    .logo;
+    opacity: 0;
+}
+
+.avatar {
+    .basic;
+    z-index: 2;
+}
+
+.avatar-collapse {
+    .avatar;
+    opacity: 0;
+}
+
+.avatar-expand {
+    .avatar;
+    opacity: 1;
+}
+
+.avatar-img {
+    width: 100px;
+    height: 100px;
+
+}

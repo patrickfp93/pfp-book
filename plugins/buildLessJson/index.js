@@ -36,33 +36,6 @@ export default style;`;
             }
             return source;
         },
-        /*async load(id) {
-          if(id.slice(-extensionLessJson.length) === extensionLessJson){            
-              const lessPath = id.substring(0,id.lastIndexOf(extensionJson));
-              //console.log("lessPath: ", lessPath);
-              const lessCode = await readFile(lessPath);
-              const json = await lessToJson(lessCode,"",removeAcronymPx);
-              if(makeModuleDeclarationFile){
-                  const fileName = id.substring(id.lastIndexOf('/')+1);
-                  const content = `declare module '${fileName}' {const style: any;export default style;}`;
-                  fs.writeFile(id + '.d.ts', content, (err) => {
-                      if (!err) {
-                          consola.log(new Date().toLocaleTimeString('en-US', { hour12: false }),"\x1b[36m","[build-less-json]",
-                          "\x1b[0m",'Json file(' + id + '.d.ts' + ') create/updated successfully!');
-                      }else{
-                          console.error("buildLessJson: ", err);
-                      }
-                  });
-              }
-              return json;
-          }else if(id.slice(-extensionLessTs.length) === extensionLessTs){
-              const lessPath = id.substring(0,id.lastIndexOf(extensionTs));
-              const lessCode = await readFile(lessPath);
-              const json = await lessToJson(lessCode,"",removeAcronymPx);
-              console.log("lessPath>>>>>>>>>>>>>: ", lessPath);
-              return json;
-          }
-        }*/
     };
 };
 export default buildLessJson;

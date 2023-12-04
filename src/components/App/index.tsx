@@ -6,9 +6,11 @@ import AppContent from "../layout/Content";
 import useThemeAppLayout from "../../services/hooks/useThemeAppLayout";
 import FlexMenu from "../view/FlexMenu";
 import References from "../view/References";
+import { useFavicon } from "@uidotdev/usehooks";
 
 export default function App() {
     const { themeState } = useThemeAppLayout();
+    useFavicon("avatar-litle-min-min.png");
     const headerMinHeight = 100;
     const footerMinHeight = 30;
     return (<CustomProvider theme={themeState} locale={ptBR}>

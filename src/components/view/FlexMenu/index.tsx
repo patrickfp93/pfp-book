@@ -3,11 +3,11 @@ import { animated} from '@react-spring/web';
 //import "./index.less";
 import useToggleSpring, { ToogleSpringState } from "../../../services/hooks/useToggleSpring";
 //import index from "./index.less?inline";
-import Logo from "../Logo";
 import Menu from "../Menu";
 import { useWindowSize } from "@uidotdev/usehooks";
 //import "./index.module.less";
 import style from "./index.less.ts";
+import EmblemSwitcher from "../EmblemSwitcher/index.tsx";
 
 //const style = JSON.parse('{"asd":"asd"}');
 const Div = animated.div;
@@ -25,9 +25,11 @@ export default function Navegator() {
     const menuStyle = useToggleSpring({states: menuV, value: aspectState === "expand" });
     //down
     const downStyle = useToggleSpring({states: downV, value: aspectState === "expand" });
+    //console.log("downStyle",downStyle)
+
     return (<Div style={containerStyle}>
         <Div style={topStyle}>
-            <Div style={style.logo} onClick={handleToggleAspect}><Logo/></Div>
+            <Div style={style.logo} onClick={handleToggleAspect}><EmblemSwitcher/></Div>
             <Div style={initialsStyle}><h1><b>PFP</b></h1><h3><i>DEV</i></h3></Div>
             <Div style={menuStyle}> <Menu/></Div>
         </Div>
