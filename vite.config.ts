@@ -2,21 +2,13 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react';
 // https://vitejs.dev/config/
 import buildLessJson from "./plugins/buildLessJson";
-import postcssModules from 'postcss-modules';
-import PostcssModulesPlugin from 'postcss-modules';
 //import ViteStyleImport from 'vite-plugin-style-import';
 //import Checker from 'vite-plugin-checker';
 
 export default defineConfig({
-  plugins: [buildLessJson(),react(),{
-    
-  }],
+  plugins: [buildLessJson(true),react()],
   css: {
-    modules:{
-      getJSON: (cssFileName: string, json: Record<string, string>, outputFileName: string) =>{
-        //buildLessJson()
-      }
-    },
+    modules:false,
     preprocessorOptions: {
       less: {
         math: "always",
@@ -27,6 +19,6 @@ export default defineConfig({
   },
   json: { stringify: false }
   , resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json', '.module.less'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.json','.less?inline'],
   },
 })

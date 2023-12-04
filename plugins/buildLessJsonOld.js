@@ -1,29 +1,55 @@
 import fs from "fs";
 import path from 'path';
 import less from "less";
+import consola from "consola";
 
 const extensionJson = ".json";
+const extensionTs = ".ts";
 const extensionLessJson = ".less"+extensionJson;
+const extensionLessTs = ".less"+extensionTs;
+const extensionModule = ".less?inline";
 
-const buildLessJson = (removeAcronymPx) => {
+const buildLessJson = (removeAcronymPx,makeModuleDeclarationFile) => {
     return {
       name: 'build-less-json',
       resolveId(source,importer) {
           if (source.slice(-extensionLessJson.length) === extensionLessJson){            
             const resource = importer.substring(0, importer.lastIndexOf('/'))
-             + source.substring(source.indexOf('/'),source.length);            
+             + "/" + source.substring(source.indexOf('/'),source.length);            
             return resource;
-        }        
+        }else if(source.slice(-extensionLessTs.length) === extensionLessTs){
+            const resource = importer.substring(0, importer.lastIndexOf('/'))
+             + "/" + source.substring(source.indexOf('/'),source.length);            
+            return resource;
+        } 
         return source;
       },
       async load(id) {
-        if(id.slice(-extensionLessJson.length) === extensionLessJson){
+        if(id.slice(-extensionLessJson.length) === extensionLessJson){            
             const lessPath = id.substring(0,id.lastIndexOf(extensionJson));
             //console.log("lessPath: ", lessPath);
             const lessCode = await readFile(lessPath);
             const json = await lessToJson(lessCode,"",removeAcronymPx);
+            if(makeModuleDeclarationFile){
+                const fileName = id.substring(id.lastIndexOf('/')+1);
+                const content = `declare module '${fileName}' {const style: any;export default style;}`;
+                fs.writeFile(id + '.d.ts', content, (err) => {
+                    if (!err) {
+                        consola.log(new Date().toLocaleTimeString('en-US', { hour12: false }),"\x1b[36m","[build-less-json]",
+                        "\x1b[0m",'Json file(' + id + '.d.ts' + ') create/updated successfully!');
+                    }else{
+                        console.error("buildLessJson: ", err);
+                    }
+                });
+            }
             return json;
-        } 
+        }else if(id.slice(-extensionLessTs.length) === extensionLessTs){
+            const lessPath = id.substring(0,id.lastIndexOf(extensionTs));
+            const lessCode = await readFile(lessPath);
+            const json = await lessToJson(lessCode,"",removeAcronymPx);
+            console.log("lessPath>>>>>>>>>>>>>: ", lessPath);
+            return json;
+        }
       }
     };
   };
