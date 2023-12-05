@@ -1,0 +1,16 @@
+@import "./../../../styles/variables.less"; 
+
+@height-panel : 25vh;
+@color : @B600;
+.panel{
+    margin-top: 50vh - (@height-panel);
+    padding-top: 5vh;
+    text-align: center;    
+    align-items: center;
+    justify-content: center;
+    height: @height-panel;
+    background-color: saturate(@color, 0%);
+    border: 5px solid darken(@color, 10%);
+    box-shadow: 5px 5px 5px @color;
+    color: white;
+}

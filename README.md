@@ -39,6 +39,8 @@ The primary goal of this website is to provide a holistic view of my skills and 
 - Animation library changes from framer-motion to react Spring;
 - Avatar component replacement for FlexMenu;
 - Creation and modification of support hooks.
+- #### Update13 *(0.2.13)*
+- Add Router.
 
 ## 🛠️Technologies Used
 

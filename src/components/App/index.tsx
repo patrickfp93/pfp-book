@@ -7,6 +7,7 @@ import useThemeAppLayout from "../../services/hooks/useThemeAppLayout";
 import FlexMenu from "../view/FlexMenu";
 import References from "../view/References";
 import { useFavicon } from "@uidotdev/usehooks";
+import { Outlet } from "react-router-dom";
 
 export default function App() {
     const { themeState } = useThemeAppLayout();
@@ -14,16 +15,18 @@ export default function App() {
     const headerMinHeight = 100;
     const footerMinHeight = 30;
     return (<CustomProvider theme={themeState} locale={ptBR}>
-            <Container>
-                <AppHeader style={{ minHeight: headerMinHeight }}>
-                    <FlexMenu/>
-                </AppHeader>
-                <AppContent headerMinHeight={headerMinHeight} footerMinHeight={footerMinHeight}></AppContent>
-                <AppFooter style={{ minHeight: footerMinHeight }}>
-                    <References />
-                </AppFooter>
-            </Container>
-        </CustomProvider>)
+        <Container>
+            <AppHeader style={{ minHeight: headerMinHeight }}>
+                <FlexMenu />
+            </AppHeader>
+            <AppContent headerMinHeight={headerMinHeight} footerMinHeight={footerMinHeight}>
+                <Outlet />
+            </AppContent>
+            <AppFooter style={{ minHeight: footerMinHeight }}>
+                <References />
+            </AppFooter>
+        </Container>
+    </CustomProvider>)
 };
 
 
