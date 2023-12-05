@@ -36,7 +36,7 @@ function lessRenderSync(code: string) {
     return reply;
 }
 
-function lessToJson(code : string, removeAcronymPx: boolean) {
+export default function lessToJson(code : string, removeAcronymPx: boolean) {
     try {
         // Compilar o LESS para CSS
         // Compilar o LESS para CSS

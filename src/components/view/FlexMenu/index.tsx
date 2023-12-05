@@ -12,7 +12,7 @@ import EmblemSwitcher from "../EmblemSwitcher/index.tsx";
 //const style = JSON.parse('{"asd":"asd"}');
 const Div = animated.div;
 export default function Navegator() {
-    const { aspectState, handleToggleAspect } = useAspectAppLayout();
+    const { aspectState} = useAspectAppLayout();
     const smWidth = 580;
     const {width: widthWin} = useWindowSize();
     //container
@@ -29,7 +29,7 @@ export default function Navegator() {
 
     return (<Div style={containerStyle}>
         <Div style={topStyle}>
-            <Div style={style.logo} onClick={handleToggleAspect}><EmblemSwitcher/></Div>
+            <Div style={style.logo}><EmblemSwitcher/></Div>
             <Div style={initialsStyle}><h1><b>PFP</b></h1><h3><i>DEV</i></h3></Div>
             <Div style={menuStyle}> <Menu/></Div>
         </Div>

@@ -18,10 +18,10 @@ const logoV : ToogleSpringState = {
 }
 
 export default function EmblemSwitcher(){
-    const {aspectState} = useAspectAppLayout();
+    const {aspectState,handleToggleAspect} = useAspectAppLayout();
     const logoStyle = useToggleSpring({states: logoV, value: aspectState === "expand" });  
     const avatarStyle = useToggleSpring({states: avatarV, value: aspectState === "expand" });
-    return(<div style={style.container}>
+    return(<div style={style.container} onClick={handleToggleAspect}>
         <Div style={logoStyle}><Logo/></Div>
         <Div style={avatarStyle}><img className="avatar-img" src={avatarImg} /></Div>
     </div>)
