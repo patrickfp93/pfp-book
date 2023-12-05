@@ -23,10 +23,26 @@ function nomarlizeJsonItemName(str : string) {
     return str;
 }
 
-async function lessToJson(code : string, removeAcronymPx: boolean) {
+function lessRenderSync(code: string) {
+    let reply: Less.RenderOutput | undefined = undefined ;
+    let error : Less.RenderError | undefined = undefined;
+    less.render(code, (err, output) => {
+        if (err) {
+            error = err
+        } else {
+            reply = output
+        }
+    });
+    while (!reply && !error) { }
+    if (error){throw new Error(error)}
+    return reply;
+}
+
+function lessToJson(code : string, removeAcronymPx: boolean) {
     try {
         // Compilar o LESS para CSS
-        const output = await less.render(code);
+        // Compilar o LESS para CSS
+        let output: any = lessRenderSync(code);
 
         // Extrair as regras CSS do código LESS compilado
         const cssRules = output.css;
@@ -36,7 +52,7 @@ async function lessToJson(code : string, removeAcronymPx: boolean) {
         const lines = cssRules.replace("{", "").replace("}", "").split('\n');
         let currentSelector : string = '';
 
-        lines.forEach((line,index) => {
+        lines.forEach((line : string,index : number) => {
             //console.log("//",line);
             if (line.trim().startsWith('.')) {
                 // Início de um seletor CSS
@@ -66,5 +82,5 @@ async function lessToJson(code : string, removeAcronymPx: boolean) {
 
 ////////////////////////////////////////////////////////////
 
-const style = await lessToJson(lessFile,true);                    
+const style = lessToJson(lessFile,true);                    
 export default style;
