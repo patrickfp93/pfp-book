@@ -8,7 +8,6 @@ import { useWindowSize } from "@uidotdev/usehooks";
 //import "./index.module.less";
 import style from "./index.less.ts";
 import EmblemSwitcher from "../EmblemSwitcher/index.tsx";
-import { Tooltip, Whisper } from "rsuite";
 
 //const style = JSON.parse('{"asd":"asd"}');
 const Div = animated.div;
