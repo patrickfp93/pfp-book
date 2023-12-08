@@ -28,10 +28,22 @@
     .background-pattern-collapse(@primary-color-high-contrast,@B700-high-contrast);
 }
 
-.page-content{
+.page-content-light{
     min-height: 100%;
     @base-color : white;
-    .background-gradient-content(@base-color)
+    .background-gradient-content(@base-color);
+    
+}
+.page-content-dark{
+    min-height: 100%;
+    @base-color : @B600-dark;        
+    .background-gradient-content(@base-color);
+}
+
+.page-content-high-contrast{
+    min-height: 100%;
+    @base-color : @B600-high-contrast;        
+    .background-gradient-content(@base-color);
 }
 
 

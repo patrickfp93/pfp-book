@@ -21,7 +21,7 @@ export default function Menu() {
         <IconButton appearance="subtle" onClick={() => handleToggleTheme()} circle icon={iconTheme} size="lg" style={{ boxShadow: "1px 1px 10px grey" }} />
         <div style={aspectState == 'expand' ? { display: "none" } : containerStyle}>
             <ResponsiveNav activeKey={activeKey} onSelect={setActiveKey} appearance="subtle">
-                <ResponsiveNav.Item as={Link} to={`/`} key="A" eventKey="A">Home</ResponsiveNav.Item>
+                <ResponsiveNav.Item as={Link} to={`/`} key="A" eventKey="A">Página Principal</ResponsiveNav.Item>
                 <ResponsiveNav.Item as={Link}  to={`/contact`} key="B" eventKey="B">Contato</ResponsiveNav.Item>
             </ResponsiveNav>
         </div>
