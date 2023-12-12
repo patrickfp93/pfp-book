@@ -8,7 +8,9 @@ import buildLessJson from "./plugins/buildLessJson";
 export default defineConfig({
   plugins: [buildLessJson(true),react()],
   css: {
-    modules:false,
+    modules:{
+      scopeBehaviour:'local'
+    },
     preprocessorOptions: {
       less: {
         math: "always",

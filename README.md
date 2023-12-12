@@ -41,7 +41,10 @@ The primary goal of this website is to provide a holistic view of my skills and 
 - Creation and modification of support hooks.
 - #### Update13 *(0.2.13)*
 - Add Router.
-
+#### Update14 *(0.2.14)*
+- Add Tooltip.
+- fix logo bug.
+  
 ## 🛠️Technologies Used
 
 The website was developed using the following technologies:

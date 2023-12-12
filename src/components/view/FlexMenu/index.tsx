@@ -11,7 +11,7 @@ import EmblemSwitcher from "../EmblemSwitcher/index.tsx";
 
 //const style = JSON.parse('{"asd":"asd"}');
 const Div = animated.div;
-export default function Navegator() {
+export default function FlexMenu() {
     const { aspectState } = useAspectAppLayout();
     const smWidth = 580;
     const { width: widthWin } = useWindowSize();

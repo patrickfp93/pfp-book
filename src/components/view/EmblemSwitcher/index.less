@@ -1,6 +1,7 @@
 .container {
     width: 100px;
     height: 100px;
+    cursor: pointer;
 }
 
 .basic {
@@ -8,20 +9,22 @@
     position: absolute;
 }
 
-
 .logo {
     .basic;
     z-index: 1;
+    width: 100px;
 }
 
 .logo-collapse {
     .logo;
-    opacity: 1;
+    opacity: 1; 
+    display: block;
 }
 
 .logo-expand {
     .logo;
-    opacity: 0;
+    opacity: 0;    
+    display: none;
 }
 
 .avatar {
@@ -42,5 +45,4 @@
 .avatar-img {
     width: 100px;
     height: 100px;
-
 }
